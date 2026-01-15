@@ -68,3 +68,8 @@ export default withViz(defineConfig({
 ## License
 
 MIT © 2026-present [Elecmonkey](https://github.com/elecmonkey)
+
+## Acknowledgments
+
+- [vitepress-plugin-mermaid](https://github.com/emersonbottero/vitepress-plugin-mermaid) - This plugin references its implementation ideas and architecture.
+- [emersonbottero](https://github.com/emersonbottero) - Author of vitepress-plugin-mermaid

@@ -95,6 +95,20 @@ digraph G {
 }
 ```
 
+Usage notes:
+
+- Optional scaling: add a scale factor after the language name, e.g. `{0.75}`.
+
+````md
+```viz {0.75}
+digraph G {
+  a -> b;
+}
+```
+````
+
+- If `{scale}` is omitted, the SVG respects container width and scales down if it would overflow.
+
 ## Advanced Configuration
 
 The `vizPlugin` option (or arguments in manual mode) accepts the following:

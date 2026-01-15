@@ -34,5 +34,22 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Decide npm dist-tag
+        id: disttag
+        run: |
+          TAG_NAME="${GITHUB_REF_NAME}"
+
+          if [[ "$TAG_NAME" == *"-alpha."* ]]; then
+            DISTTAG=alpha
+          elif [[ "$TAG_NAME" == *"-beta."* ]]; then
+            DISTTAG=beta
+          elif [[ "$TAG_NAME" == *"-rc."* ]]; then
+            DISTTAG=next
+          else
+            DISTTAG=latest
+          fi
+
+          echo "tag=$DISTTAG" >> $GITHUB_OUTPUT
+
       - name: Publish to NPM
-        run: npm publish --no-git-checks --access public --provenance
+        run: npm publish --no-git-checks --access public --provenance --tag ${{ steps.disttag.outputs.tag }}

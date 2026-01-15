@@ -32,13 +32,14 @@
   "author": "Elecmonkey",
   "license": "MIT",
   "peerDependencies": {
-    "vitepress": "^1.0.0 || ^2.0.0-0",
-    "@viz-js/viz": "^3.24.0"
+    "@viz-js/viz": "^3.24.0",
+    "vitepress": "^1.0.0 || ^2.0.0-0"
   },
   "devDependencies": {
     "@types/node": "^25.0.8",
     "tsdown": "^0.20.0-beta.3",
     "vite": "^8.0.0-beta.8",
-    "vitepress": "^2.0.0-alpha.15"
+    "vitepress": "^2.0.0-alpha.15",
+    "vue": "^3.5.26"
   }
 }

@@ -80,6 +80,12 @@ watch(() => props.graph, renderChart);
   color: var(--vp-c-text-1);
 }
 
+.viz-container svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .viz-error {
   color: red;
   border: 1px solid red;

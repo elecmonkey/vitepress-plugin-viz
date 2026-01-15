@@ -38,6 +38,7 @@ export default withViz(defineConfig({
               items: [
                 { text: "Getting Started", link: "/guide/getting-started" },
                 { text: "Development", link: "/guide/development" },
+                { text: "Changelog", link: "/guide/changelog" },
               ],
             },
           ],
@@ -64,6 +65,7 @@ export default withViz(defineConfig({
               items: [
                 { text: "快速开始", link: "/zh/guide/getting-started" },
                 { text: "开发指南", link: "/zh/guide/development" },
+                { text: "更新日志", link: "/zh/guide/changelog" },
               ],
             },
           ],

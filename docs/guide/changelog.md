@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-beta.3
+
+- Fix repository release workflow.
+
 ## 1.0.0-beta.2
 
 - Support dark mode.

@@ -3,7 +3,7 @@ import { withViz } from "../../src";
 import { version } from "../../package.json";
 
 export default withViz(defineConfig({
-  title: "Vitepress Plugin Viz",
+  title: "VitePress Plugin Viz",
   description: "Graphviz support for VitePress",
   base: "/",
   lastUpdated: true,

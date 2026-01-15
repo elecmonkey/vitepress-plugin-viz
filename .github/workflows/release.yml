@@ -52,4 +52,4 @@ jobs:
           echo "tag=$DISTTAG" >> $GITHUB_OUTPUT
 
       - name: Publish to NPM
-        run: npm publish --no-git-checks --access public --provenance --tag ${{ steps.disttag.outputs.tag }}
+        run: npm publish --access public --provenance --tag ${{ steps.disttag.outputs.tag }}

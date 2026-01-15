@@ -41,5 +41,6 @@
     "vite": "^8.0.0-beta.8",
     "vitepress": "^2.0.0-alpha.15",
     "vue": "^3.5.26"
-  }
+  },
+  "packageManager": "pnpm@10.28.0"
 }

@@ -1,10 +1,75 @@
 <script setup lang="ts">
+import { ref, watch, onMounted, onBeforeUnmount, h, render } from 'vue'
 import Viz from '../../../../dist/Viz.vue'
 
-defineProps<{
+const props = defineProps<{
   graph: string
   previewText: string
 }>()
+
+const shadowHost = ref<HTMLDivElement | null>(null)
+let shadowRoot: ShadowRoot | null = null
+
+const shadowStyles = `
+:host {
+  display: block;
+}
+
+.viz-shadow-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--vp-c-text-1);
+}
+
+.viz-shadow-root svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.viz-shadow-root .viz-error {
+  color: red;
+  border: 1px solid red;
+  padding: 8px;
+}
+`
+
+const mountViz = () => {
+  if (!shadowRoot) {
+    return
+  }
+
+  render(
+    h('div', { class: 'viz-shadow-root' }, [
+      h('style', shadowStyles),
+      h(Viz, { graph: props.graph }),
+    ]),
+    shadowRoot
+  )
+}
+
+onMounted(() => {
+  if (!shadowHost.value) {
+    return
+  }
+  shadowRoot = shadowHost.value.attachShadow({ mode: 'open' })
+  mountViz()
+})
+
+watch(
+  () => props.graph,
+  () => {
+    mountViz()
+  }
+)
+
+onBeforeUnmount(() => {
+  if (shadowRoot) {
+    render(null, shadowRoot)
+  }
+})
 </script>
 
 <template>
@@ -23,7 +88,7 @@ defineProps<{
         <span class="title-text">{{ previewText }}</span>
       </div>
       <div class="viz-wrapper">
-        <Viz :graph="graph" />
+        <div ref="shadowHost" class="preview-shadow-host"></div>
       </div>
     </div>
   </div>
@@ -112,6 +177,10 @@ defineProps<{
   justify-content: center;
   align-items: center;
   background: var(--vp-c-bg);
+}
+
+.preview-shadow-host {
+  width: 100%;
 }
 
 .demo-visual:hover .code-card,

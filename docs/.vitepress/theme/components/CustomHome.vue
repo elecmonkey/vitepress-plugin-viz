@@ -16,25 +16,27 @@ const viewOnGithubText = computed(() => isZh.value ? '在 GitHub 上查看' : 'V
 const previewText = computed(() => isZh.value ? '预览' : 'Preview')
 
 const graph = computed(() => {
+  const nodeFill = isDark.value ? "transparent" : "#f8f8f8"
+  const svgFill = isDark.value ? "transparent" : "#e5e7eb"
   if (isZh.value) {
     return `digraph G {
   rankdir=LR
-  node [style=filled, fillcolor="#f8f8f8"]
+  node [style=filled, fillcolor="${nodeFill}"]
   
   "文档" -> Graphviz [label=" 使用"]
   Graphviz -> "SVG 图表" [label=" 渲染"]
   
-  "SVG 图表" [fillcolor="#d4edda"]
+  "SVG 图表" [fillcolor="${svgFill}"]
 }`
   }
   return `digraph G {
   rankdir=LR
-  node [style=filled, fillcolor="#f8f8f8"]
+  node [style=filled, fillcolor="${nodeFill}"]
   
   Docs -> Graphviz [label=" uses"]
   Graphviz -> "SVG" [label=" renders"]
   
-  "SVG" [fillcolor="#d4edda"]
+  "SVG" [fillcolor="${svgFill}"]
 }`
 })
 </script>

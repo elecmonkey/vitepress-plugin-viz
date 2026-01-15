@@ -137,7 +137,7 @@ defineProps<{
 }
 
 .action-button.secondary:hover {
-  background-color: var(--vp-c-bg-mute);
+  background-color: var(--vp-c-default-soft);
 }
 
 </style>

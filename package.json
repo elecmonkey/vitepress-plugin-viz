@@ -1,0 +1,44 @@
+{
+  "name": "vitepress-plugin-viz",
+  "version": "1.0.0-beta.1",
+  "description": "Add Graphviz support for VitePress using @viz-js/viz",
+  "type": "module",
+  "types": "./dist/index.d.mts",
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./Viz.vue": "./dist/Viz.vue"
+  },
+  "keywords": [
+    "vitepress",
+    "plugin",
+    "viz",
+    "graphviz"
+  ],
+  "author": "Elecmonkey",
+  "license": "MIT",
+  "peerDependencies": {
+    "vitepress": "^2.0.0-alpha.15",
+    "@viz-js/viz": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.8",
+    "tsdown": "^0.20.0-beta.3",
+    "vite": "^8.0.0-beta.8",
+    "vitepress": "^2.0.0-alpha.15"
+  }
+}

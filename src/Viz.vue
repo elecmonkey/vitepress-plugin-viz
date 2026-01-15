@@ -19,7 +19,12 @@ const props = defineProps({
     type: String,
     required: false,
     default: "viz",
-  }
+  },
+  scale: {
+    type: [String, Number],
+    required: false,
+    default: 1,
+  },
 });
 
 const svg = ref("");
@@ -60,6 +65,22 @@ const renderChart = async () => {
     }
     
     adaptColor(svgElement);
+
+    const scale = Number(props.scale) || 1;
+    if (scale !== 1) {
+      const applyScaledSize = (attrName) => {
+        const raw = svgElement.getAttribute(attrName);
+        if (!raw) return;
+        const match = String(raw).trim().match(/^([0-9]*\.?[0-9]+)\s*([a-z%]*)$/i);
+        if (!match) return;
+        const value = Number(match[1]) * scale;
+        const unit = match[2] || "";
+        svgElement.setAttribute(attrName, `${value}${unit}`);
+      };
+
+      applyScaledSize("width");
+      applyScaledSize("height");
+    }
 
     svg.value = svgElement.outerHTML;
   } catch (err) {

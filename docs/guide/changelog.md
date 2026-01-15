@@ -1,10 +1,6 @@
 # Changelog
 
-## 1.0.0-beta.4
-
-- Fix repository release workflow.
-
-## 1.0.0-beta.3
+## 1.0.0-beta.3-5
 
 - Fix repository release workflow.
 

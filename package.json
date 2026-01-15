@@ -32,7 +32,7 @@
   "author": "Elecmonkey",
   "license": "MIT",
   "peerDependencies": {
-    "vitepress": "^2.0.0-alpha.15",
+    "vitepress": "^1.0.0 || ^2.0.0-0",
     "@viz-js/viz": "^3.24.0"
   },
   "devDependencies": {

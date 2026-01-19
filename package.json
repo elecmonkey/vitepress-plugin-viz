@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-viz",
-  "version": "1.0.0-beta.8",
+  "version": "1.0.0",
   "description": "Add Graphviz support for VitePress using @viz-js/viz",
   "type": "module",
   "types": "./dist/index.d.mts",
@@ -36,16 +36,17 @@
     "type": "git",
     "url": "https://github.com/elecmonkey/vitepress-plugin-viz"
   },
+  "homepage": "https://vitepress-plugin-viz.edev.uno/",
   "peerDependencies": {
     "@viz-js/viz": "^3.24.0",
     "vitepress": "^1.0.0 || ^2.0.0-0"
   },
   "devDependencies": {
-    "@types/node": "^25.0.8",
+    "@types/node": "^25.0.9",
     "tsdown": "^0.20.0-beta.3",
     "vite": "^8.0.0-beta.8",
     "vitepress": "^2.0.0-alpha.15",
-    "vue": "^3.5.26"
+    "vue": "^3.5.27"
   },
-  "packageManager": "pnpm@10.28.0"
+  "packageManager": "pnpm@10.28.1"
 }

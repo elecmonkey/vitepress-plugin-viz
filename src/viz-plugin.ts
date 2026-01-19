@@ -20,8 +20,10 @@ export function VizPlugin(
     enforce: "post",
 
     transform(src, id) {
-      //Register Viz component in vue instance creation
-      if (id.includes("vitepress/dist/client/app/index.js")) {
+      // Register Viz component in vue instance creation
+      // Normalize path to handle Windows paths and different package managers
+      const normalizedId = id.replace(/\\/g, '/');
+      if (normalizedId.includes("vitepress/dist/client/app/index.js")) {
         src =
           "\nimport Viz from 'vitepress-plugin-viz/Viz.vue';\n" +
           src;
@@ -32,13 +34,19 @@ export function VizPlugin(
           line.includes("app.component")
         );
 
-        lines.splice(
-          targetLineIndex,
-          0,
-          '  app.component("Viz", Viz);'
-        );
-
-        src = lines.join("\n");
+        if (targetLineIndex !== -1) {
+          lines.splice(
+            targetLineIndex,
+            0,
+            '  app.component("Viz", Viz);'
+          );
+          src = lines.join("\n");
+        } else {
+          console.warn(
+            "[vitepress-plugin-viz] Failed to inject Viz component automatically: 'app.component' not found in VitePress client entry. " +
+            "Please register the Viz component manually in your theme."
+          );
+        }
 
         return {
           code: src,

@@ -2,16 +2,19 @@
   <div v-html="svg" :class="['viz-container', props.class]" ref="container"></div>
 </template>
 
+<script>
+import { instance } from "@viz-js/viz";
+const vizPromise = instance();
+</script>
+
 <script setup>
 import { onMounted, ref, watch } from "vue";
-import { instance } from "@viz-js/viz";
 
 const props = defineProps({
   graph: {
     type: String,
     required: true,
-  },
-  id: {
+  },  id: {
     type: String,
     required: false,
   },
@@ -32,7 +35,7 @@ const container = ref(null);
 
 const renderChart = async () => {
   try {
-    const viz = await instance();
+    const viz = await vizPromise;
     // decodeURIComponent is needed because we encoded it in the markdown plugin
     const code = decodeURIComponent(props.graph);
     const svgElement = viz.renderSVGElement(code, {
